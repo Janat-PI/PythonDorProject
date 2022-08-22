@@ -99,8 +99,8 @@ def delete_data(id: int) -> dict:
 
 
 
-for i in range(10):
-    create_data(f"test{i}@test.com", "hello it is SPAMMMM")
+# for i in range(10):
+#     create_data(f"test{i}@test.com", "hello it is SPAMMMM")
 
 
 # show_database(flag=True)
@@ -109,13 +109,35 @@ for i in range(10):
 # update_data(3, email="Zhant@gmail.com", message="Hahah lol")
 # print(delete_data(id=3))
 
-try:
-    object_ = read_to_database(id=9)
-except Exception as e:
-    print(e)
-else:
-    print("Вот твои даные!!!!")
-    print(object_)
+# try:
+#     object_ = read_to_database(id=9)
+# except Exception as e:
+#     print(e)
+# else:
+#     print("Вот твои даные!!!!")
+#     print(object_)
+
+
+dict_ = {
+    1: show_database,
+    2: create_data,
+    3: update_data,
+    4: delete_data
+}
+
+if __name__ == "__main__":
+    print("Hello select choice: 1) Show  2) Add   3) Update 4) Delete ")
+
+    while True:
+        answer = int(input("enter choice: "))
+        if answer == 1:
+            dict_[answer](flag=True)
+        elif answer == 2:
+            email = input("enter email: ")
+            message = input("enter message: ")
+            add = dict_[answer]
+            add(email=email, message=message)
+
 
 
 # TODO ShowData upgrade!!!!
